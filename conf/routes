@@ -1,0 +1,48 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#HomeController
+GET         /                                controllers.HomeController.index
+GET         /store                           controllers.HomeController.store
+GET         /login                           controllers.HomeController.login
+GET         /signUp                          controllers.HomeController.signUp
+GET         /product/:id                     controllers.HomeController.product(id: String)
+
+#AdminController
+GET         /adminHome                       controllers.AdminController.adminHome
+GET         /adminItems                      controllers.AdminController.adminItems
+GET         /adminAddItem                    controllers.AdminController.adminAddItem
+GET         /adminUpdateItem/:id             controllers.AdminController.updateItem(id: String)
+GET         /adminDeleteItem/:id             controllers.AdminController.deleteItem(id: String)
+
+GET         /adminTestimonys                 controllers.AdminController.adminTestimonys
+GET         /adminAddTestimony               controllers.AdminController.adminAddTestimony
+#GET         /adminUpdateTestimony/:id        controllers.AdminController.updateTestimony(id: String)
+GET         /adminDeleteTestimony/:id        controllers.AdminController.deleteTestimony(id: String)
+
+#LoginController
+GET         /logout                          controllers.LoginController.logout
+GET         /evanconlon.me                   controllers.Default.redirect(to = "http://evanconlon.me/")
+
+
+#HomeController Post
+POST        /addUserSubmit                   controllers.HomeController.addUserSubmit
+#LoginController Post
+POST        /loginSubmit                     controllers.LoginController.loginSubmit
+#AdminController Post
+POST        /addItemSubmit                   controllers.AdminController.addItemSubmit
+POST        /updateItemSubmit                controllers.AdminController.updateItemSubmit
+
+POST        /addTestimonySubmit              controllers.AdminController.addTestimonySubmit
+#POST        /updateTestimonySubmit           controllers.AdminController.updateTestimonySubmit
+
+# An example controller showing how to use dependency injection
+GET         /count                           controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET         /message                         controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                    controllers.Assets.versioned(path="/public", file: Asset)
+
+GET         /evanconlon.me                   controllers.Default.redirect(to = "http://evanconlon.me/")

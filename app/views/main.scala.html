@@ -1,0 +1,170 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Template</title>
+
+            <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/creative.min.css")">
+
+            <!-- Custom Fonts -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
+        <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+
+            <!--Tab Icon -->
+
+            <!-- Plugin CSS -->
+        <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+
+            <!-- Theme CSS -->
+        <link href="css/creative.min.css" rel="stylesheet">
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <style>
+                button.accordion {
+                    background-color: #33432E;
+                    border: 2px solid white;
+                    padding: 15px 30px;
+                    border-radius: 300px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    color: #fff;
+                }
+                button.accordion.active, button.accordion:hover {
+                }
+                button.accordion:after {;
+                    color: #777;
+                    font-weight: bold;
+                    float: right;
+                    margin-left: 5px;
+                }
+                button.accordion.active:after {
+                }
+                div.panel {
+                    /* margin-top: 10px; */
+                    background-color: #33432E;
+                    /* border: 1px solid white; */
+                    max-height: 0;
+                    width: 100%;
+                    color: white;
+                    border-radius: 30px;
+                    overflow: hidden;
+                    transition: max-height 0.2s ease-out;
+                }
+        </style>
+    </head>
+
+    <body id="page-top">
+
+        <nav id="black-nav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="@routes.HomeController.index()"></a>
+                </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.index()#services">Services</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.index()#about">About</a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.index()#portfolio">Testimonial</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.index()#image">Images</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.index()#contact">Contact</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="@routes.HomeController.store()">Store</a>
+                        </li>
+                    </ul>
+                </div>
+                    <!-- /.navbar-collapse -->
+            </div>
+                <!-- /.container-fluid -->
+        </nav>
+        @content
+
+
+        <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].onclick = function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight){
+                            panel.style.maxHeight = null;
+                        } else {
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                        }
+                    }
+                }
+        </script>
+            <!-- Include jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+            <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+
+        <script>
+                function goBack() {
+                    window.history.back();
+                }
+        </script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+            <!--Created by Evan-->
+            <!-- Plugin JavaScript -->
+        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+        <script src="@routes.Assets.versioned("javaScript/jquery.easing.min.js")"></script>
+
+
+            <!-- Custom scripts for this template -->
+        <script src="@routes.Assets.versioned("javaScript/grayscale.min.js")"></script>
+    </body>
+</html>

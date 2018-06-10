@@ -1,0 +1,48 @@
+@(testimony: Testimony, user: models.users.User, error: String)
+@AdminPages.adminMain("Admin Item", user) {
+    <div class="m-header scene_element scene_element--fadein">
+        <div class="row">
+            <h1 class="page-header" style="text-align: center">Add a new Testimony</h1>
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                        @if(error != null) {
+                            <div class="alert alert-warning">
+                                <strong>@error</strong>
+                            </div>
+                        }
+                        <form method="post" action="@routes.AdminController.addTestimonySubmit()" class="form-horizontal" enctype="multipart/form-data">
+                            <label id="label" class="control-label">Title:</label>
+                            <input type="text" name="title" class="form-control" required/>
+
+                            <label id="label" class="control-label">Description:</label>
+
+                            <input type="text" name="description" class="form-control" required/>
+
+
+                            <label id="label" class="custom-file">Image Upload:
+                                <input class="custom-file-input" id="file" type="file" name="upload">
+                                <span class="custom-file-control"></span>
+                            </label>
+
+                            <div class="span7 text-center">
+                                <input type="submit" value="Add Testimony" class="btn btn-lg btn-primary">
+                            </div>
+                        </form>
+                        <div class="span7 text-center">
+                            <button class="btn btn-lg btn-warning" onclick="goBack()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <script>
+                function confirmDel() {
+                    return confirm('Are you sure?');
+                }
+        </script>
+        }
+    <!--Created by Evan-->

@@ -1,0 +1,50 @@
+@(user: models.users.User, env: play.api.Environment, items: List[Item])
+@AdminPages.adminMain("Admin Item", user) {
+    @if(flash().containsKey("success")) {
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-success">
+                    <strong>@flash().get("success")</strong>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="span7 text-center">
+                <h1 class="page-header" style="padding-top: 10px;">Admin Item</h1>
+                <a href="@routes.AdminController.adminAddItem()" id="buttons" class="btn btn-primary btn-xl page-scroll">Add Item</a>
+            </div>
+        </div>
+    </div>
+
+
+    @for(i <- items) {
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="padding-top: 10px;">@i.getTitle</h1>
+            </div>
+        </div>
+        @*<div class="m-header scene_element scene_element--fadein">*@
+            @*<div class="col-lg-3 col-sm-12" id="imageSize">*@
+                @*<img src="@i.getImage" />*@
+
+        @*</div>*@
+            <div class="col-lg-12">
+                <p>Cost: €@i.getCost</p>
+                <p>Description: @i.getDescription</p>
+                @*<p>Category: @i.getCatagory</p>*@
+                <p><a class="btn btn-lg btn-danger" id="right-btn" href="@routes.AdminController.deleteItem(i.getItemId)" role="button" onclick="return confirmDel();">Delete</a></p>
+                <p><a class="btn btn-lg btn-primary" id="right-btn" href="@routes.AdminController.updateItem(i.getItemId)" role="button">Update</a></p>
+            </div>
+    }
+
+
+    <script>
+            function confirmDel() {
+                return confirm('Are you sure?');
+            }
+    </script>
+}
+    <!--Created by Evan-->

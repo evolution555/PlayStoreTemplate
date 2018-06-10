@@ -1,0 +1,80 @@
+@(user: models.users.User, items: List[Item], i: Item, env: play.api.Environment)
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Product") {
+
+    <div class="container">
+
+            <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 id="homeHeading" style="font-size: 60px;
+                    padding-top: 30px;">@i.getTitle</h3>
+            </div>
+        </div>
+            <!-- /.row -->
+
+            <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+            @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                <img class="img-responsive" src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+            } else {
+                <img src="/assets/images/Items/noImage.jpg" />
+            }
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="text-faded">Package Description</h3>
+                <p class="text-faded">@i.getDescription</p>
+                <h3 class="text-faded">Project Details</h3>
+                <ul class="text-faded">
+                    <li>Lorem Ipsum</li>
+                    <li>Dolor Sit Amet</li>
+                    <li>Consectetur</li>
+                    <li>Adipiscing Elit</li>
+                </ul>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll" style=" background-color: #6EC2F6;">
+                    Buy Now</a>
+            </div>
+
+        </div>
+            <!-- /.row -->
+
+            <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h3 class="page-header">Other Packages</h3>
+            </div>
+            @for(i <- items) {
+                <div class="col-md-4 col-sm-10 hero-feature">
+                    <div class="thumbnail">
+                        @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                            <img id="thumbnail" src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+                        } else {
+                            <img id="thumbnail" src="/assets/images/Items/noImage.jpg" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+            <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+            <!-- Plugin JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+            <!-- Theme JavaScript -->
+        <script src="js/creative.min.js"></script>
+}

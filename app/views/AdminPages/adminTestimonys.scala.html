@@ -1,0 +1,73 @@
+@(user: models.users.User, env: play.api.Environment, testimony: List[Testimony])
+@AdminPages.adminMain("Admin Item", user) {
+    @if(flash().containsKey("success")) {
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-success">
+                    <strong>@flash().get("success")</strong>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="span7 text-center">
+                <h1 class="page-header" style="padding-top: 10px;">Admin Testimony's</h1>
+                <a href="@routes.AdminController.adminAddTestimony()" id="buttons" class="btn btn-primary btn-xl page-scroll">Add Testimony</a>
+            </div>
+        </div>
+    </div>
+
+
+    @for(t <- testimony) {
+        <div class="container-fluid">
+            <div id="visContent" class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
+                <a id="visContent" class="portfolio-box" style="background: #191D1F;
+                    opacity: 1;">
+                    <img class="img-responsive" alt="" style="background-color: black;">
+                    <div class="portfolio-box-caption" style="background: #191D1F;
+                        opacity: 1;" >
+                        <div class="portfolio-box-caption-content">
+                            <div id="homeHeading2">
+                                @t.getTitle
+                                @t.getDescription
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>  <!-- Text -->
+
+            <div class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
+                <a href class="portfolio-box">
+                    @if(env.resource("public/images/" + t.getTitle + ".jpeg").isDefined) {
+                        <img class="img-responsive" src="/assets/images/@(t.getTitle + ".jpeg")" />
+                    } else {
+                        <img class="img-responsive" src="/assets/images/noImage.jpg" />
+
+                    }
+                    <div class="portfolio-box-caption" style="background: black;
+                        opacity: 0">
+                        <div class="portfolio-box-caption-content">
+                        </div>
+                    </div>
+                </a>
+            </div>  <!-- Img -->
+        </div>
+
+        <div class="m-header scene_element scene_element--fadeinright">
+            <div class="col-lg-9">
+                <p><a class="btn btn-lg btn-danger" id="right-btn" href="@routes.AdminController.deleteTestimony(t.getId)" role="button" onclick="return confirmDel();">Delete</a></p>
+                <p><a class="btn btn-lg btn-primary" id="right-btn" href="@routes.AdminController.updateItem(t.getId)" role="button">Update</a></p>
+            </div>
+        </div>
+    }
+
+
+    <script>
+            function confirmDel() {
+                return confirm('Are you sure?');
+            }
+    </script>
+}
+    <!--Created by Evan-->

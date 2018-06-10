@@ -1,0 +1,42 @@
+@(loginForm: Form[models.users.Login])
+    @import helper._
+    @main("Login") {
+        @if(flash().containsKey("error")) {
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="alert alert-danger">
+                        <strong>@flash().get("error")</strong>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <div class="m-page scene_element scene_element--fadein" style="padding-bottom: 138px;">
+            <h1 id="blackHeading">Sign In</h1>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel-body" >
+                            <div class="centered">
+                                <div class="text-faded">
+                                @helper.form(action = controllers.routes.LoginController.loginSubmit()) {
+                                    <div class="form-group">
+                                    @inputText(loginForm("email"), '_label -> "Email:", 'class -> "form-control input-xs", 'placeholder -> "John.Doe@email.com")
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="form-group">
+                                    @inputPassword(loginForm("password"), '_label -> "Password:", 'class -> "form-control input-xs", 'placeholder -> "Password")
+                                    </div>
+                                    <div class="span7 text-center">
+                                        <input type="submit" id="buttons" value="Sign In" class="btn btn-lg btn-primary">
+                                    </div>
+                                }
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    }
+        <!--Created by Evan-->
