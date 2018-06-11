@@ -29,8 +29,7 @@ public class HomeController extends Controller {
 
     public Result index() {
         User u = getUserFromSession();
-        List<Testimony> allTest = Testimony.findAll();
-        return ok(index.render(u, env, allTest));
+        return ok(index.render(u, env));
     }
 
     public Result login() {
@@ -41,6 +40,13 @@ public class HomeController extends Controller {
     public Result store() {
         List<Item> allItems = Item.findAll();
         return ok(store.render(allItems, env));
+    }
+
+    public Result product(String id){
+        User u = getUserFromSession();
+        Item item = Item.find.byId(id);
+        List<Item> allItems = Item.findAll();
+        return ok(product.render(u, allItems,item ,env));
     }
 
     public Result signUp() {
@@ -81,11 +87,5 @@ public class HomeController extends Controller {
         return redirect(controllers.routes.HomeController.index());
     }
 
-    public Result product(String id){
-        User u = getUserFromSession();
-        Item item = Item.find.byId(id);
-        List<Item> allItems = Item.findAll();
-        return ok(product.render(u, allItems,item ,env));
-    }
 
 }

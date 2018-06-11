@@ -9,12 +9,12 @@ import com.avaje.ebean.*;
 @Entity
 public class Order extends Model{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_gen")
     private String orderId;
     //list of product ids
     private double cost;
     private double shippingCost;
-    private string shipping address;
+    private String shippingAddress;
     private boolean discountApplied;
     private int discountAmmount;
     //email address many orders to one email. one email to any order
@@ -22,7 +22,7 @@ public class Order extends Model{
     //Finders
     public static Finder<String, Order> find = new Finder<String, Order>(Order.class);
 
-    public static List<Item> findAll(){
+    public static List<Order> findAll(){
         return Order.find.all();
     }
 
@@ -42,12 +42,12 @@ public class Order extends Model{
         this.shippingCost = shippingCost;
     }
 
-    public string getShipping() {
-        return shipping;
+    public String getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setShipping(string shipping) {
-        this.shipping = shipping;
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public boolean isDiscountApplied() {

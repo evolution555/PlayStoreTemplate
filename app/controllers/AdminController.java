@@ -6,17 +6,13 @@ import views.html.AdminPages.*;
 import play.data.*;
 import models.users.*;
 import models.*;
-
 import javax.inject.Inject;
 import java.util.*;
-
 import play.mvc.Http.MultipartFormData.FilePart;
 import views.html.*;
 import views.html.AdminPages.adminAddItem;
-import views.html.AdminPages.adminAddTestimony;
 import views.html.AdminPages.adminHome;
 import views.html.AdminPages.adminItems;
-import views.html.AdminPages.adminTestimonys;
 import views.html.AdminPages.adminUpdateItem;
 
 import java.io.*;
@@ -56,7 +52,6 @@ public class AdminController extends Controller {
         i.setTitle(df.get("title"));
         i.setDescription(df.get("description"));
         i.setCatagory(df.get("catagory"));
-        i.setAddress(df.get("address"));
         try {
             i.setCost(Double.parseDouble(df.get("cost")));
         } catch (NumberFormatException e) {
@@ -127,49 +122,6 @@ public class AdminController extends Controller {
         return redirect(routes.AdminController.adminItems());
     }
 
-    public Result adminTestimonys(){
-        User u = HomeController.getUserFromSession();
-        List<Testimony> allTest = Testimony.findAll();
-        return ok(adminTestimonys.render(u, env, allTest));
-    }
-    public Result adminAddTestimony(){
-        Testimony t = new Testimony();
-        User u = HomeController.getUserFromSession();
-        return ok(adminAddTestimony.render(t, u, null));
-    }
-    public Result addTestimonySubmit() {
-        DynamicForm df = formFactory.form().bindFromRequest();
-        Testimony i = new Testimony();
-        i.setTitle(df.get("title"));
-        i.setDescription(df.get("description"));
-
-        String saveImageMsg;
-
-        List<Testimony> allTestimonys = Testimony.findAll();
-        for (Testimony testimony : allTestimonys) {
-            if (testimony.getTitle().equals(i.getTitle())) {
-                return badRequest(adminAddTestimony.render(i, HomeController.getUserFromSession(), "Testimony already in database."));
-            }
-        }
-        i.save();
-
-        Http.MultipartFormData data = request().body().asMultipartFormData();
-        FilePart image = data.getFile("upload");
-
-        flash("success", saveFile(i.getTitle(), image));
-        return redirect(routes.AdminController.adminTestimonys());
-    }
-
-    public Result deleteTestimony (String id) {
-        Testimony t = Testimony.find.byId(id);
-        Testimony.find.ref(id).delete();
-        flash("success", "Testimony has been deleted.");
-
-        //Deleting image from folder.
-        File file = new File("public/images/" + t.getTitle() + ".jpg");
-        file.delete();
-        return redirect(routes.AdminController.adminTestimonys());
-    }
 
     //Image Save
     public String saveFile(String title, FilePart<File> uploaded) {

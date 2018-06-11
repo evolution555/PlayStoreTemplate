@@ -91,12 +91,7 @@ public class Item extends Model{
 
     //Availability
     //Returns the current avialibility
-    public boolean getavailability() {
-        return availability;
-    }
-
-    //Sets availability
-    public void setavailability() {
+    public void getAvailability() {
         if (getQuantity() <= 0) {
             availability = false;
         } else {
@@ -120,15 +115,14 @@ public class Item extends Model{
     //call when X quantity of item is purchased
     public void reduceQuantity(int quant){
         if(quantity - quant >= 0){
-            if(quantity - quant ==0){
-                setavailability(false);
-            }
+            getAvailability();
         }
     }
 
     //Sets quantity to value
-    public void setQuantity(int quantity) {
+    public void getQuantity(int quantity) {
         this.quantity = quantity;
+        getAvailability();
     }
 
     //Returns the current quantity
@@ -163,7 +157,7 @@ public class Item extends Model{
     //Profit
     //Get profit
     public double getProfit() {
-        getCost()- getProductionCost() - getShippingCost() = profit;
+         profit = getCost()- getProductionCost() - getShippingCost();
         return profit;
     }
 }

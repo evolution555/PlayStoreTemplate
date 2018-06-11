@@ -16,10 +16,6 @@ GET         /adminAddItem                    controllers.AdminController.adminAd
 GET         /adminUpdateItem/:id             controllers.AdminController.updateItem(id: String)
 GET         /adminDeleteItem/:id             controllers.AdminController.deleteItem(id: String)
 
-GET         /adminTestimonys                 controllers.AdminController.adminTestimonys
-GET         /adminAddTestimony               controllers.AdminController.adminAddTestimony
-#GET         /adminUpdateTestimony/:id        controllers.AdminController.updateTestimony(id: String)
-GET         /adminDeleteTestimony/:id        controllers.AdminController.deleteTestimony(id: String)
 
 #LoginController
 GET         /logout                          controllers.LoginController.logout
@@ -33,9 +29,6 @@ POST        /loginSubmit                     controllers.LoginController.loginSu
 #AdminController Post
 POST        /addItemSubmit                   controllers.AdminController.addItemSubmit
 POST        /updateItemSubmit                controllers.AdminController.updateItemSubmit
-
-POST        /addTestimonySubmit              controllers.AdminController.addTestimonySubmit
-#POST        /updateTestimonySubmit           controllers.AdminController.updateTestimonySubmit
 
 # An example controller showing how to use dependency injection
 GET         /count                           controllers.CountController.count
