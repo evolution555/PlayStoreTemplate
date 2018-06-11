@@ -29,7 +29,7 @@ body {
 }
 
 .page-header {
-    border-color: #33432E;
+    border-color: white;
 }
 
 #black-nav {
@@ -60,7 +60,7 @@ body {
 }
 
 #buttons {
-    background-color: #33432E;
+    background-color: white;
     border: 2px solid white;
 }
 
