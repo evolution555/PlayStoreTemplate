@@ -13,6 +13,8 @@ public class User extends Model{
     private String name;
     private String role;
     private String password;
+    //Add dob and format.
+    //Add purchases
 
     public static User create(String email, String name, String role, String password){
         User user = new User();
@@ -63,7 +65,9 @@ public class User extends Model{
     }
 
     public void setRole(String role) {
-        this.role = role;
+        if(this.role == "GodAdministrator" || this.role == "LAdmin" || this.role == "User" || this.role == "Guest"){
+            this.role = role;
+        }
     }
 
     public String getName() {
