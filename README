@@ -1,3 +1,32 @@
 Template Play Framework.
 
-Template for store
+Template for store.
+
+This will be a generic java play framework application. Designed to be used as a template for ecommerce web apps.
+
+To run locally:
+Git clone https://github.com/evolution555/PlayStoreTemplate.git
+In the active directory for PlayStoreTemplate, open terminal or CMD and type "sbt run"
+Go to your favorite web browser and go to localhost:9000. Here you can see the template.
+
+
+Features:
+Login / Logout
+Sign up / Delete account
+Create Products
+Create new local admin
+Dashboard
+Change main body of content
+Change images
+Sign up with Google
+Stripe payment integration
+
+Access Structure:
+Administrator ->
+				Local Admin ->
+								User ->
+										Guest
+										
+
+Designed and created by Evolved Content
+Visit: evanconlon.me
